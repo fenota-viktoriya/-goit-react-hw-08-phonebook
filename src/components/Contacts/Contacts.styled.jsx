@@ -9,11 +9,9 @@ export const ListContacts = styled.ul`
 export const ItemContacts = styled.li`
   display: flex;
   gap: 15px;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: baseline;s
   padding: 8px;
   height: 30px;
-  width: 250px;
 `;
 
 export const TextContacts = styled.p`

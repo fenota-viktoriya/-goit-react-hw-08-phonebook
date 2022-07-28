@@ -1,11 +1,12 @@
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
 import { Container } from '@mui/material';
-import { PrivateRoute } from 'components/PrivateRoute';
-import { PublicRoute } from 'components/PublicRoute';
-import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 import { authOperation } from 'redux/auth';
 import { BarMenu } from '../AppBar/BarMenu';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { PublicRoute } from 'components/PublicRoute';
 const HomePage = lazy(() =>
   import('../../pages/HomePage').then(module => ({ default: module.HomePage }))
 );
@@ -35,7 +36,14 @@ export const App = () => {
     <Container maxWidth="xl">
       <Routes>
         <Route path="/" element={<BarMenu />}>
-          <Route index element={<HomePage />} />
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <HomePage />
+              </PublicRoute>
+            }
+          />
           <Route
             path="contacts"
             element={
@@ -60,8 +68,8 @@ export const App = () => {
               </PublicRoute>
             }
           />
+          <Route path="*" element={<ContactsPage />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Container>
   );
