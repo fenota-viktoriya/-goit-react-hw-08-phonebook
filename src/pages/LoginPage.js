@@ -42,6 +42,7 @@ export function LoginPage() {
 
   const onSubmit = data => {
     const { email, password } = data;
+
     dispatch(authOperation.logIn({ email, password }));
   };
 

@@ -45,6 +45,7 @@ export function RegisterPage() {
 
   const onSubmit = data => {
     const { name, email, password } = data;
+
     dispatch(authOperation.register({ name, email, password }));
   };
 
